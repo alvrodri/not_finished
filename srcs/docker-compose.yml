@@ -1,0 +1,38 @@
+version: "3.9"
+services:
+    mariadb:
+        build: ./requirements/mariadb/
+        container_name: "mariadb"
+        env_file: ./.env
+        restart: always
+#        volumes:
+#            - "/sgoinfre/students/alvrodri/data/mariadb:/var/lib/mysql"
+#            - "/home/alvrodri/data/mariadb:/var/lib/mysql"
+        stdin_open: true
+        tty: true
+    wordpress:
+        build: ./requirements/wordpress
+        container_name: "wordpress"
+        env_file: ./.env
+        restart: always
+        depends_on:
+            - "mariadb"
+        stdin_open: true
+        tty: true
+        volumes:
+            - "/sgoinfre/students/alvrodri/data/wordpress:/var/www/html"
+    nginx:
+        build: ./requirements/nginx
+        container_name: "nginx"
+        env_file: ./.env
+        restart: always
+        depends_on:
+            - "mariadb"
+            - "wordpress"
+        stdin_open: true
+        tty: true
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - "/sgoinfre/students/alvrodri/data/wordpress:/var/www/html"
