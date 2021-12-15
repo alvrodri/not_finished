@@ -11,6 +11,6 @@ RUN mkdir /run/php
 COPY ./tools/wp-config.php /var/www/html/wordpress/wp-config.php
 
 COPY ./tools/wordpress.sh /wordpress.sh
-chmod 777 /wordpress.sh
+RUN chmod 777 /wordpress.sh
 
 CMD [ "/wordpress.sh" ]
