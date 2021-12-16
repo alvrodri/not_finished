@@ -7,8 +7,6 @@ services:
         restart: always
         volumes:
             - "/home/alvrodri/data/mariadb:/var/lib/mysql"
-        stdin_open: true
-        tty: true
     wordpress:
         build: ./requirements/wordpress
         container_name: "wordpress"
@@ -16,8 +14,6 @@ services:
         restart: always
         depends_on:
             - "mariadb"
-        stdin_open: true
-        tty: true
         volumes:
             - "/home/alvrodri/data/wordpress:/var/www/html"
     nginx:
@@ -31,7 +27,6 @@ services:
         stdin_open: true
         tty: true
         ports:
-            - "80:80"
             - "443:443"
         volumes:
             - "/home/alvrodri/data/wordpress:/var/www/html"
