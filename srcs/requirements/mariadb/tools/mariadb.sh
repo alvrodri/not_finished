@@ -14,5 +14,5 @@ mysql -e "CREATE DATABASE wordpress charset utf8mb4 collate utf8mb4_unicode_ci"
 mysql -e "CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD'"
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO '$MYSQL_USER'@'*'"
 mysql -e "FLUSH PRIVILEGES"
-#mysqld_safe
-bash
+service mysql stop
+mysqld_safe

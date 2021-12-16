@@ -7,6 +7,6 @@ COPY ./tools/mariadb.sh /mariadb.sh
 RUN chmod 777 /mariadb.sh
 
 COPY ./tools/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
-RUN chmod 777 /etc/mysql/mariadb.conf.d/50-server.cnf
+#RUN chmod 777 /etc/mysql/mariadb.conf.d/50-server.cnf
 
 ENTRYPOINT [ "/mariadb.sh" ]

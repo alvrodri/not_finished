@@ -17,4 +17,4 @@ RUN chmod 777 /wordpress.sh
 COPY ./tools/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 RUN chmod 777 /etc/php/7.3/fpm/pool.d/www.conf
 
-ENTRYPOINT [ "/wordpress.sh" ]
+ENTRYPOINT ["/wordpress.sh"]

@@ -4,5 +4,6 @@ RUN apt -y update
 RUN apt -y install nginx
 
 COPY ./tools/default /etc/nginx/sites-available/default
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
-CMD [ "bash" ]
+ENTRYPOINT [ "nginx" ]
