@@ -31,15 +31,15 @@ services:
         volumes:
             - "wp:/var/www/html"
 volumes:
-	db:
-		driver: local
-		driver_opts:
-			type: none
-			o: bind
-			device: /home/alvrodri/data/mariadb
-	wp:
-		driver: local
-		driver_opts:
-			type: none
-			o: bind
-			device: /home/alvrodri/data/mariadb
+    db:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: /home/alvrodri/data/mariadb
+    wp:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: /home/alvrodri/data/mariadb
