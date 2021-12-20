@@ -8,7 +8,7 @@ services:
         env_file: ./.env
         restart: always
         networks:
-            - "nw"
+            - nw
         volumes:
             - "db:/var/lib/mysql"
     wordpress:
@@ -19,7 +19,7 @@ services:
         depends_on:
             - "mariadb"
         networks:
-            - "nw"
+            - nw
         volumes:
             - "wp:/var/www/html"
     nginx:
@@ -35,7 +35,7 @@ services:
         ports:
             - "443:443"
         networks:
-            - "nw"
+            - nw
         volumes:
             - "wp:/var/www/html"
 networks:
