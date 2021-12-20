@@ -2,9 +2,13 @@ version: "3.3"
 services:
     mariadb:
         build: ./requirements/mariadb/
+        tty: true
+        stdin_open: true
         container_name: "mariadb"
         env_file: ./.env
         restart: always
+        networks:
+            - "nw"
         volumes:
             - "db:/var/lib/mysql"
     wordpress:
@@ -14,6 +18,8 @@ services:
         restart: always
         depends_on:
             - "mariadb"
+        networks:
+            - "nw"
         volumes:
             - "wp:/var/www/html"
     nginx:
@@ -28,8 +34,13 @@ services:
         tty: true
         ports:
             - "443:443"
+        networks:
+            - "nw"
         volumes:
             - "wp:/var/www/html"
+networks:
+    nw:
+        driver: bridge
 volumes:
     db:
         driver: local
