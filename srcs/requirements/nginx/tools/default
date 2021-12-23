@@ -9,7 +9,10 @@ server {
 
 	index index.php index.html index.htm index.nginx-debian.html;
 
-	server_name localhost;
+	server_name alvrodri.42.fr;
+	ssl_protocols TLSv1.2;
+
+	location ~* \.(?:css|js|map|jpe?g|gif|png) { }
 
 	location / {
 		try_files $uri $uri/ =404;
@@ -23,5 +26,6 @@ server {
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_param PATH_INFO $fastcgi_path_info;
+	fastcgi_param REQUEST_METHOD $request_method;
 	}
 }
