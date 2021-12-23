@@ -10,7 +10,7 @@ server {
 	index index.php index.html index.htm index.nginx-debian.html;
 
 	server_name alvrodri.42.fr;
-	ssl_protocols TLSv1.2;
+	ssl_protocols TLSv1.2 TLSv1.3;
 
 	location ~* \.(?:css|js|map|jpe?g|gif|png) { }
 
